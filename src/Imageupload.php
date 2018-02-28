@@ -30,7 +30,7 @@ class Imageupload
         'original_width' => 0,
         'original_height' => 0,
 
-        'exif' => [],
+        'exif' => "",
 
         'path' => null,
         'dir' => null,
