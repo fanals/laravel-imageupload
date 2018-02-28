@@ -11,6 +11,7 @@ use Illuminate\Support\Str;
 use Intervention\Image\ImageManager;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Illuminate\Support\Facades\Storage;
+use Cocur\Slugify\Slugify;
 
 class Imageupload
 {
@@ -222,6 +223,9 @@ class Imageupload
             default:
                 $newfilename = pathinfo($originalFilename, PATHINFO_FILENAME);
         }
+        
+        $slugify = new Slugify();
+        $newfilename = $slugify->slugify($newfilename.'-'.$timestamp);
 
         $this->results['basename'] = (string) $newfilename;
         $this->results['filename'] = $newfilename.'.'.$extension;
